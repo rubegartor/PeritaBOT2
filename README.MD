@@ -74,8 +74,7 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 **[Memes]** - Configuración de los Memes
 
  - **path**: Ruta a la carpeta que contiene los memes
- *Windows:* C:\\\Usuarios\\\PeritaBOT\\\Escritorio\\\memes\\\\
- *Linux:* /home/PeritaBOT/memes/
+    - *Linux:* /home/PeritaBOT/memes/
 
 **[MySQL]** - Configuración de la base de datos
  - **host**: Ip del servidor MySQL
@@ -100,3 +99,16 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 	    `date` varchar(255) NOT NULL,
 	    PRIMARY KEY (`id`)
 	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+	    
+# Instalación
+Para instalar la librería principal del bot:
+
+    python3 -m pip install -U discord.py[voice]
+
+Para instalar otras librerías de python3 necesarias:
+
+    python3 -m pip install -r requirements.txt
+
+Para instalar el paquete ffmpeg:
+
+    sudo apt-get install ffmpeg
