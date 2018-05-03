@@ -22,7 +22,6 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`cat`                    |Muestra una foto aleatoria de gatos                     |Usuario      |
 |`help`                   |Muestra el mensaje de ayuda                             |Usuario      |
 |`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
-|`deletethis`             |Votación para eliminar el último mensaje del canal      |Usuario      |
 |`reminders help`         |Más información sobre el grupo de comandos              |Usuario      |
 |`mute [username]`        |Mutea al usuario del canal de voz                       |Administrador|
 |`unmute [username]`      |Desmutea al usuario del canal de voz                    |Administrador|
@@ -99,7 +98,7 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 	    `date` varchar(255) NOT NULL,
 	    PRIMARY KEY (`id`)
 	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-	    
+
 # Instalación
 Para instalar la librería principal del bot:
 
