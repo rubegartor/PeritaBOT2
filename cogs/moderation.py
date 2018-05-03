@@ -65,55 +65,6 @@ class Moderation:
       print('Command unmute: {}'.format(e))
 
   @commands.command(pass_context = True)
-  async def deletethis(self, ctx):
-    """Se realiza una votación para eliminar el último mensaje del canal"""
-    try:
-      message = ctx.message
-      res_count = 0
-      poll_time = 60
-      results = [0, 0]
-      to_remove = []
-
-      async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
-        to_remove.append(x)
-
-      await self.bot.add_reaction(message, '✅')
-      await self.bot.add_reaction(message, '🚫')
-      await self.bot.send_typing(message.channel)
-      alert_msg = await self.bot.say('¡Quedan {} segundos para que acabe la votación!'.format(poll_time))
-      to_remove.append(alert_msg)
-
-      await self.bot.send_message(to_remove[1].author, '¡Hey! Uno de tus mensajes quiere ser eliminado')
-
-      for i in range(0, poll_time):
-        await asyncio.sleep(1)
-        poll_time -= 1
-        await self.bot.edit_message(alert_msg, '¡Quedan {} segundos para que acabe la votación!'.format(poll_time))
-      for emoji in message.reactions:
-        if res_count < 2:
-          res_count += 1
-          results[res_count - 1] = emoji.count
-        else:
-          break
-
-      if results[0] > results[1]:
-        await self.bot.delete_messages(to_remove)
-        await self.bot.send_typing(ctx.message.channel)
-        await self.bot.say(":white_check_mark: Votación aceptada")
-      elif results[0] < results[1]:
-        to_remove.remove(to_remove[1])
-        await self.bot.delete_messages(to_remove)
-        await self.bot.send_typing(ctx.message.channel)
-        await self.bot.say(":no_entry_sign: Votacion rechazada")
-      else:
-        to_remove.remove(to_remove[1])
-        await self.bot.delete_messages(to_remove)
-        await self.bot.send_typing(ctx.message.channel)
-        await self.bot.say(":interrobang: Votación nula")
-    except Exception as e:
-      print('Command deletethis: {}'.format(e))
-
-  @commands.command(pass_context = True)
   async def ban(self, ctx, user):
     try:
       if self.Bot.root_role in [y.name.lower() for y in ctx.message.author.roles]:
@@ -162,7 +113,7 @@ class Moderation:
       if self.Bot.root_role in [y.name.lower() for y in ctx.message.author.roles]:
         for i in range(10):
           msg = ctx.message.content.split()[1:]
-          await self.bot.say(''.join(msg))
+          await self.bot.say(' '.join(msg))
           await asyncio.sleep(1)
     except Exception as e:
       print('Command spam: {}'.format(e))
