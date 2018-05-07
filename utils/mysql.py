@@ -31,7 +31,6 @@ class Connect:
       cursor.execute(query)
       self.db.commit()
     except Exception as e:
-      print(e)
       self.db.rollback()
 
   def delete(self, query):
