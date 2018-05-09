@@ -22,7 +22,7 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`cat`                    |Muestra una foto aleatoria de gatos                     |Usuario      |
 |`help`                   |Muestra el mensaje de ayuda                             |Usuario      |
 |`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
-|`reminders help`         |Más información sobre el grupo de comandos              |Usuario      |
+|`spamvoice`              |Spamea el canal de voz en el que estes                  |Usuario      |
 |`mute [username]`        |Mutea al usuario del canal de voz                       |Administrador|
 |`unmute [username]`      |Desmutea al usuario del canal de voz                    |Administrador|
 |`ban [username]`         |Banea al usuario del servidor                           |Administrador|
@@ -45,11 +45,6 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
     osu=d4b2d8c20786a997e0a5b90f143c7530
     [Memes]
     path=C:\\Usuarios\\PeritaBOT\\Escritorio\\memes\\
-    [MySQL]
-    host=192.168.1.10
-    user=peritabot
-    password=********
-    database=peritabot
 
 **[PeritaBOT]** - Configuración básica del bot
 
@@ -74,30 +69,6 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 
  - **path**: Ruta a la carpeta que contiene los memes
     - *Linux:* /home/PeritaBOT/memes/
-
-**[MySQL]** - Configuración de la base de datos
- - **host**: Ip del servidor MySQL
- - **user**: Usuario del servidor MySQL
- - **password**: Contraseña del usuario
- - **database**: Nombre de la base de datos del servidor
-
-
-# Creación de la base de datos y la tabla reminders:
-
-* **Crear base de datos:**
-
-	    CREATE DATABASE `peritabot`;
-
-* **Crear tabla reminders:**
-
-        CREATE TABLE `reminders` (
-	    `id` int(100) unsigned NOT NULL AUTO_INCREMENT,
-	    `user_id` varchar(255) NOT NULL,
-	    `username` varchar(255) NOT NULL,
-	    `title` longtext NOT NULL,
-	    `date` varchar(255) NOT NULL,
-	    PRIMARY KEY (`id`)
-	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 # Instalación
 Para instalar la librería principal del bot:
