@@ -69,7 +69,7 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 
  - **path**: Ruta a la carpeta que contiene los memes
     - *Linux:* /home/PeritaBOT/memes/
-    - *Windows:* C:\\Usuarios\\PeritaBOT\\Escritorio\\memes\\
+    - *Windows:* C:\\\Usuarios\\\PeritaBOT\\\Escritorio\\\memes\\\
 
 # Instalación
 Para instalar la librería principal del bot:
