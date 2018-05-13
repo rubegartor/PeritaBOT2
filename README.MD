@@ -1,7 +1,7 @@
 # PeritaBOT 2
 
-**PeritaBOT 2** es una nueva versión mejorada del antiguo [PeritaBOT](https://github.com/rubegartor/PeritaBOT). Con este bot de discord proporcionaras nuevos comandos a tus usuarios, entre los que destacan comandos administrativos, comandos de diversión, Music Bot, etc.
 
+**PeritaBOT 2** es una nueva versión mejorada del antiguo [PeritaBOT](https://github.com/rubegartor/PeritaBOT). Con este bot de discord proporcionaras nuevos comandos a tus usuarios, entre los que destacan comandos administrativos, miscelánea, Music Bot, etc.
 
 # Comandos
 Todos los comandos del bot los puedes encontrar en la siguiente lista:
@@ -10,19 +10,31 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |-------------------------|--------------------------------------------------------|-------------|
 |`8ball [pregunta]`       |La bola mágica responde a tus preguntas                 |Usuario      |
 |`memes help`             |Más información sobre el grupo de comandos              |Usuario      |
-|`aww`                    |Fotos de animalitos <3                                  |Usuario      |
 |`space [num] [word]`     |Añade num espacios entre las letras de la palabra       |Usuario      |
 |`reverse [text]`         |Da la vuelta al contenido del mensaje                   |Usuario      |
 |`avatar [username(s)]`   |Obtiene la foto de perfil de los usuarios mencionados   |Usuario      |
 |`ping`                   |Muestra la latencia (ms) del bot                        |Usuario      |
 |`overwatch [username#id]`|Información sobre el jugador en Overwatch               |Usuario      |
+|`osu [username]`         |Información sobre el jugador en Osu!                    |Usuario      |
 |`random [max_num]`       |Devuelve un número aleatorio                            |Usuario      |
 |`react [text]`           |Reacciona al último mensaje del canal en forma de emojis|Usuario      |
 |`choose [opciones]`      |Elige una opción entre todas                            |Usuario      |
 |`cat`                    |Muestra una foto aleatoria de gatos                     |Usuario      |
 |`help`                   |Muestra el mensaje de ayuda                             |Usuario      |
 |`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
+|`updates`                |Muestra si hay actualizaciones disponibles              |Usuario      |
+|`invite`                 |Genera la URL de invitación para PeritaBOT 2            |Usuario      |
 |`spamvoice`              |Spamea el canal de voz en el que estes                  |Usuario      |
+|`se [emoji]`                     |Muestra la imagen original de un emoji                  |Usuario      |
+|`summon`                 |Une al bot a tu canal de voz                            |Usuario      |
+|`join [channel]`         |Une al bot al canal de voz especificado                 |Usuario      |
+|`playing`                |Muestra la cancion que se esta reproduciendo            |Usuario      |
+|`skip`                   |Peticion para saltar la cancion actual                  |Usuario      |
+|`play [url] or [title]`  |Reproduce/agrega la cancion especificada                |Usuario      |
+|`pause`                  |Pausa la cancion actual                                 |Usuario      |
+|`resume`                 |Continua la cancion pausada                             |Usuario      |
+|`volume [0-100]`         |Establece el volumen para la musica                     |Usuario      |
+|`stop`                   |Kickea el bot del canal de voz                          |Usuario      |
 |`mute [username]`        |Mutea al usuario del canal de voz                       |Administrador|
 |`unmute [username]`      |Desmutea al usuario del canal de voz                    |Administrador|
 |`ban [username]`         |Banea al usuario del servidor                           |Administrador|
