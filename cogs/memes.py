@@ -1,30 +1,15 @@
 from discord.ext import commands
 from run import Bot
 from requests import get
+from utils.funcs import Funcs
 import discord
 import configparser
 import random
-import aiohttp
-import json
-import os
 
 class Memes:
   def __init__(self, bot):
     self.bot = bot
     self.Bot = Bot()
-
-    def getConfig(dict, key):
-      config = configparser.ConfigParser()
-      config.read(self.Bot.config + 'config.ini')
-      return config[dict][key]
-
-    self.path = getConfig('Memes', 'path')
-
-  def toList(array):
-    return [(x.split('_')[0], x) for x in array]
-
-  def toFiles(path):
-      return [x for x in os.listdir(path)]
 
   @commands.group(pass_context = True)
   async def memes(self, ctx):
@@ -52,32 +37,36 @@ class Memes:
     """Muestra los prefijos disponibles"""
     try:
       prefixes = []
-      meme = Memes.toList(Memes.toFiles(self.path))
+      meme = Funcs().toList(Funcs().toFiles(self.Bot.memes_path))
       for k,v in meme:
         if not k in prefixes:
           prefixes.append(k)
       await self.bot.send_typing(ctx.message.channel)
       await self.bot.say('**__Aquí tienes una lista de los prefijos disponibles:__**\n' + ', '.join(prefixes))
     except Exception as e:
-      print('Command memes prefixes: {}'.format(e))
+      print('Command memes prefixes: [{}] {}'.format(type(e).__name__, e))
 
   @memes.command(pass_context = True)
   async def push(self, ctx, URL, name):
     """Añade un meme a través de una URL"""
     try:
       if self.Bot.root_role in [y.name.lower() for y in ctx.message.author.roles]:
-        data = Memes.toFiles(self.path)
+        data = Funcs().toFiles(self.Bot.memes_path)
         memes = [x for x in data]
         if "_" in name:
-          if name in memes:
-            await self.bot.send_typing(ctx.message.channel)
-            await self.bot.say('Ya hay un meme con ese nombre (`{}`)'.format(name))
+          if name[len(name) - 3:] in ['png', 'jpg', 'gif']:
+            if name in memes:
+              await self.bot.send_typing(ctx.message.channel)
+              await self.bot.say('Ya hay un meme con ese nombre (`{}`)'.format(name))
+            else:
+              with open(self.Bot.memes_path + name, 'wb') as file:
+                file.write(get(URL).content)
+                file.close()
+              await self.bot.send_typing(ctx.message.channel)
+              await self.bot.say(':white_check_mark: Nuevo meme añadido!')
           else:
-            with open(self.path + name, 'wb') as file:
-              file.write(get(URL).content)
-              file.close()
             await self.bot.send_typing(ctx.message.channel)
-            await self.bot.say(':white_check_mark: Nuevo meme añadido!')
+            await self.bot.say('El nombre de la imagen necesita formato (ej: prefijo_nombre.png)')
         else:
           await self.bot.send_typing(ctx.message.channel)
           await self.bot.say('Necesitas especificar el prefijo en el nombre del meme')
@@ -85,22 +74,21 @@ class Memes:
         await self.bot.send_typing(ctx.message.channel)
         await self.bot.say('`No tienes permiso para usar este comando`')
     except Exception as e:
-      print('Command memes push: {}'.format(e))
+      print('Command memes push: [{}] {}'.format(type(e).__name__, e))
 
   @memes.command(pass_context = True)
   async def show(self, ctx, prefix : str):
     """Muestra los memes por prefijo"""
     try:
-      prefixes = Memes.toList(Memes.toFiles(self.path))
-      selected = []
+      prefixes = Funcs().toList(Funcs().toFiles(self.Bot.memes_path))
+      selected = [(x, y) for x, y in prefixes if x == prefix]
 
-      for x, y in prefixes:
-        if x == prefix:
-          selected.append((x, y))
-
-      await self.bot.send_file(ctx.message.channel, self.path + random.choice(selected)[1])
+      await self.bot.send_file(ctx.message.channel, self.Bot.memes_path + random.choice(selected)[1])
     except Exception as e:
-      print('Command memes show: {}'.format(e))
+      if e.errno == 2:
+        await self.bot.say('No existen memes con  el prefijo: `{}`'.format(prefix))
+      else:
+        print('Command memes show: [{}] {}'.format(type(e).__name__, e))
 
 def setup(bot):
   bot.add_cog(Memes(bot))
