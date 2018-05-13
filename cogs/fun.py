@@ -79,7 +79,9 @@ class Fun:
   async def like(self, ctx):
     """Reacciona con un like al último mensaje del canal"""
     try:
-      msg = [x async for x in self.bot.logs_from(ctx.message.channel, limit = 2)]
+      msg = []
+      async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
+        msg.append(x)
 
       await self.bot.delete_message(msg[0])
       await self.bot.add_reaction(msg[1], '👌')
