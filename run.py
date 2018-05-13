@@ -1,9 +1,13 @@
 from discord.ext import commands
+from utils.funcs import Funcs
 import discord
 import time
 import asyncio
 import datetime
 import configparser
+import os
+import sys
+import json
 
 cogs = ['cogs.core', 'cogs.overwatch', 'cogs.fun', 'cogs.moderation', 'cogs.memes', 'cogs.music', 'cogs.osu']
 
@@ -12,9 +16,20 @@ class Bot():
     self.config = ''
 
     def getConfig(dict, key):
-      config = configparser.ConfigParser()
-      config.read(self.config + 'config.ini')
-      return config[dict][key]
+      if os.path.exists(self.config + 'config.ini'):
+        config = configparser.ConfigParser()
+        config.read(self.config + 'config.ini')
+        return config[dict][key]
+      else:
+        print('[ERROR] Cant read version file')
+        sys.exit()
+
+    def getVersion():
+      if os.path.exists(self.config + 'version'):
+        return Funcs().readFile(self.config + 'version').rstrip()
+      else:
+        print('[ERROR] Cant read version file')
+        sys.exit()
 
     self.token = getConfig('PeritaBOT', 'token')
     self.osu_token = getConfig('Osu', 'osu')
@@ -22,6 +37,8 @@ class Bot():
     self.chrono_hour = int(getConfig('ChronoGG', 'hour'))
     self.root_role = getConfig('PeritaBOT', 'rootRole')
     self.prefix = getConfig('PeritaBOT', 'prefix')
+    self.memes_path = getConfig('Memes', 'path')
+    self.version = getVersion()
     self.bot = commands.Bot(command_prefix = self.prefix, description = 'PeritaBOT 2.0')
     self.start_time = time.time()
 
@@ -42,53 +59,31 @@ class Bot():
       print('[INFO] PeritaBOT Ready!')
       print('-----------------------------------')
       print('[INFO] discord.py version: {}'.format(discord.__version__))
+      print('[INFO] Bot Username: {}'.format(self.bot.user.name))
       print('[INFO] Bot ID: {}'.format(self.bot.user.id))
+      print('[INFO] PeritaBOT 2 Version: {}'.format(self.version))
+      print('-----------------------------------')
 
     @self.bot.event
     async def on_message(message):
       if message.author == self.bot.user:
         return
       elif message.content.startswith('{}help'.format(self.prefix)):
-        help_cmd = ':gear: __**LISTA DE COMANDOS: **__\n'
-        help_cmd += '```ini\n{}8ball [question] - La bola mágica responde a tu pregunta\n'.format(self.prefix)
-        help_cmd += '{}memes help - Más información sobre el grupo de comandos\n'.format(self.prefix)
-        help_cmd += '{}aww - Fotos de animalitos <3\n'.format(self.prefix)
-        help_cmd += '{}avatar [usernames] - Obtiene la foto de perfil de los usuarios mencionado\n'.format(self.prefix)
-        help_cmd += '{}ping - Muestra la latencia (ms) del bot\n'.format(self.prefix)
-        help_cmd += '{}overwatch [username#id] - Información sobre el jugador en Overwatch\n'.format(self.prefix)
-        help_cmd += '{}random [max_num] - Devuelve un numero aleatorio\n'.format(self.prefix)
-        help_cmd += '{}space [num] [word] - Añade num espacios entre las letras de la palabra\n'.format(self.prefix)
-        help_cmd += '{}reverse [text] - Da la vuelta al contenido del mensaje\n'.format(self.prefix)
-        help_cmd += '{}react [text] - Reacciona al último mensaje del canal en forma de emojis\n'.format(self.prefix)
-        help_cmd += '{}choose [options] - Elige una opcion entre todas\n'.format(self.prefix)
-        help_cmd += '{}cat - Muestra una foto aleatoria de gatos\n'.format(self.prefix)
-        help_cmd += '{}help - Muestra este mensaje\n'.format(self.prefix)
-        help_cmd += '{}spamvoice - Spamea el canal de voz en el que estes\n'.format(self.prefix)
-        help_cmd += '{}info - Muestra información sobre el servidor y el Bot```\n'.format(self.prefix)
-        help_cmd += ':musical_note: __**COMANDOS MUSIC BOT: **__\n'.format(self.prefix)
-        help_cmd += '```ini\n{}summon - Une al bot a tu canal de voz\n'.format(self.prefix)
-        help_cmd += '{}join [channel] - Une al bot al canal de voz especificado\n'.format(self.prefix)
-        help_cmd += '{}playing - Muestra la cancion que se esta reproduciendo\n'.format(self.prefix)
-        help_cmd += '{}skip - Peticion para saltar la cancion actual\n'.format(self.prefix)
-        help_cmd += '{}play [url] o [title] - Reproduce/agrega la cancion especificada\n'.format(self.prefix)
-        help_cmd += '{}pause - Pausa la cancion actual\n'.format(self.prefix)
-        help_cmd += '{}resume - Continua la cancion pausada\n'.format(self.prefix)
-        help_cmd += '{}volume [0-100] - Establece el volumen para la cancion\n'.format(self.prefix)
-        help_cmd += '{}stop - Kickea el bot del canal de voz```\n'.format(self.prefix)
-        help_cmd += ':robot: __**COMANDOS ADMINISTRATIVOS: **__\n'.format(self.prefix)
-        help_cmd += '```ini\n{}mute [username] - Mutea al usuario del canal de voz\n'.format(self.prefix)
-        help_cmd += '{}unmute [username] - Desmutea al usuario del canal de voz\n'.format(self.prefix)
-        help_cmd += '{}ban [username] - Banea al usuario del servidor\n'.format(self.prefix)
-        help_cmd += '{}unban [name] - Desbanea al usuario del servidor (requiere invitación)\n'.format(self.prefix)
-        help_cmd += '{}ban_list - Muestra la lista de usuarios baneados en el servidor\n'.format(self.prefix)
-        help_cmd += '{}spam [msg] - Spammea un mensaje 10 veces por un canal de texto\n'.format(self.prefix)
-        help_cmd += '{}prune [num] - Elimina num de mensajes (Max. 99)```'.format(self.prefix)
-        await self.bot.send_message(message.author, help_cmd)
+        data = json.loads(Funcs().readFile(self.config + 'db/commands.json'))
+        msg = '```'
+        for item in range(len(data)):
+          msg += '{}{} - {}\n'.format(self.prefix, data[item]['command'], data[item]['info'])
+        msg += '```'
+        await self.bot.send_message(message.author, msg)
         await self.bot.delete_message(message)
       else:
         try:
-          print('[{}] {} #> {}'.format(message.server.name, message.author, message.content))
+          if message.content == '':
+            print('[{}] {} #> {}'.format(message.server.name, message.author, message.attachments[0]['url']))
+          else:
+            print('[{}] {} #> {}'.format(message.server.name, message.author, message.content))
         except Exception as e:
+          print('{} - {}'.format(type(e).__name__, e))
           pass
         await self.bot.process_commands(message)
 
@@ -111,11 +106,11 @@ class Bot():
 
     async def chrono_notifier(channel):
       await self.bot.wait_until_ready()
-      now_done = 0
+      done = 0
       while not self.bot.is_closed:
         try:
           now = datetime.datetime.now()
-          if now.hour == self.chrono_hour and now_done == 0:
+          if now.hour == self.chrono_hour and done == 0:
             e = discord.Embed(title='ChronoGG Time!', description="ChronoGG BOT Notificator", color=0x4C0B5F)
             e.set_thumbnail(url='https://chrono.gg/assets/images/favicon/favicon-196x196.4e111a55.png')
             e.add_field(name="Canjea las monedas de ChronoGG:", value='https://chrono.gg', inline=True)
@@ -123,10 +118,12 @@ class Bot():
             await self.bot.send_typing(discord.Object(id = channel))
             await self.bot.send_message(discord.Object(id = channel), '@everyone')
             await self.bot.send_message(discord.Object(id = channel), embed = e)
-            now_done = 1
-          if now.hour == self.chrono_hour + 1  and now.minute == 0 and now_done == 1:
-            now_done = 0
+            done = 1
+          if now.hour == self.chrono_hour + 1  and now.minute == 0 and done == 1:
+            done = 0
           await asyncio.sleep(5)
+        except CancelledError:
+          pass
         except Exception as e:
           print('async chrono_notifier: [{}] {}'.format(type(e).__name__, e))
 
