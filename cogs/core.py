@@ -1,41 +1,18 @@
 from discord.ext import commands
+from utils.funcs import Funcs
 from run import Bot
 import discord
 import random
 import time
 import datetime
 import configparser
+import json
+import aiohttp
 
 class Core:
   def __init__(self, bot):
     self.bot = bot
     self.Bot = Bot()
-    self.emoji_lst = [('a', '🇦'),
-      ('b', '🇧'),
-      ('c', '🇨'),
-      ('d', '🇩'),
-      ('e', '🇪'),
-      ('f', '🇫'),
-      ('g', '🇬'),
-      ('h', '🇭'),
-      ('i', '🇮'),
-      ('j', '🇯'),
-      ('k', '🇰'),
-      ('l', '🇱'),
-      ('m', '🇲'),
-      ('n', '🇳'),
-      ('o', '🇴'),
-      ('p', '🇵'),
-      ('q', '🇶'),
-      ('r', '🇷'),
-      ('s', '🇸'),
-      ('t', '🇹'),
-      ('u', '🇺'),
-      ('v', '🇻'),
-      ('w', '🇼'),
-      ('x', '🇽'),
-      ('y', '🇾'),
-      ('z', '🇿')]
 
   @commands.command(pass_context = True)
   async def ping(self, ctx):
@@ -46,13 +23,12 @@ class Core:
       t2 = time.perf_counter()
       await self.bot.say(':ping_pong: Pong! **{}ms**'.format(round((t2-t1)*1000)))
     except Exception as e:
-      print('Command ping: {}'.format(e))
+      print('Command ping: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def info(self, ctx):
     """Muestra información sobre el bot"""
     try:
-      await self.bot.send_typing(ctx.message.channel)
       elapsed_time = time.gmtime(time.time() - self.Bot.start_time)
       formated_time = str(elapsed_time[7] - 1) + " día(s), " + str(elapsed_time[3]) + " hrs, " + str(elapsed_time[4]) + " min"
       active_guilds = len(self.bot.servers)
@@ -69,7 +45,7 @@ class Core:
       if ctx.message.server.me.color:
         color = ctx.message.server.me.color
 
-      e = discord.Embed(color = color, title = 'PeritaBOT Estadísticas', description = 'Made by **@rubegator** - https://github.com/rubegartor/PeritaBOT')
+      e = discord.Embed(color = color, title = 'PeritaBOT 2 Estadísticas', description = 'Made by **@rubegator** - https://github.com/rubegartor/PeritaBOT2')
       e.add_field(name = '> Tiempo activo', value = formated_time)
       e.add_field(name = '> Guilds activas', value = active_guilds)
       e.add_field(name = '> Número de usuarios', value = total_users)
@@ -79,34 +55,32 @@ class Core:
       e.add_field(name = '> Región del Servidor', value = region_server)
       e.add_field(name = '> Propietario del Servidor', value = owner)
       e.set_thumbnail(url = server_icon_url)
+      await self.bot.send_typing(ctx.message.channel)
       await self.bot.say(embed = e)
     except Exception as e:
-      print('Command info: {}'.format(e))
+      print('Command info: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def react(self, ctx, *args):
     """Reacciona con emojis al último mensaje con el texto que se proporcione"""
     try:
-      msg = []
-      args = ' '.join(args).lower()
-      allowed_chars = [x for x, y in self.emoji_lst]
+      allowed = 'abcdefghijklmnopqrstuvwxyz'
+      data = json.loads(Funcs().readFile(self.Bot.config + 'db/emojis.json'))
+      args = ''.join(args).lower()
 
-      async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
-        msg.append(x)
+      msg = [x async for x in self.bot.logs_from(ctx.message.channel, limit = 2)]
 
       await self.bot.delete_message(msg[0])
 
       for a in args:
-        if a not in allowed_chars:
+        if a not in allowed:
           args = args.replace(a, '')
 
-      for k, v in self.emoji_lst:
-        args = args.replace(k, v)
+      for i in args:
+        await self.bot.add_reaction(msg[1], data[0][i])
 
-      for n in list(args):
-        await self.bot.add_reaction(msg[1], n)
     except Exception as e:
-      print('Command react: {}'.format(e))
+      print('Command react: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def avatar(self, ctx):
@@ -119,9 +93,10 @@ class Core:
           await self.bot.send_typing(ctx.message.channel)
           await self.bot.send_message(ctx.message.channel, embed = embed)
         else:
+          await self.bot.send_typing(ctx.message.channel)
           await self.bot.say(':exclamation: El usuario {} no tiene avatar'.format(user.name))
     except Exception as e:
-      print('Command avatar: {}'.format(e))
+      print('Command avatar: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True, aliases = ['rnd'])
   async def random(self, ctx, number : int):
@@ -130,34 +105,74 @@ class Core:
       await self.bot.send_typing(ctx.message.channel)
       await self.bot.say('Tu numero es: `{}`'.format(random.randint(0, number)))
     except Exception as e:
-      print('Command random: {}'.format(e))
+      print('Command random: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def space(self, ctx, num, word):
     """Añade num espacios entre las letras del texto"""
     try:
       if num.isdigit():
-        if int(num) >= 1 and int(num) <=20:
+        if int(num) >= 1 and int(num) <= 20:
           spaces = ' ' * int(num)
+          await self.bot.send_typing(ctx.message.channel)
           await self.bot.say(spaces.join(list(word)))
         else:
+          await self.bot.send_typing(ctx.message.channel)
           await self.bot.say('El número de espacios debe ser un número del 1 al 20')
       else:
+        await self.bot.send_typing(ctx.message.channel)
         await self.bot.say('El primer argumento debe ser un número del 1 al 20')
     except Exception as e:
-      print('Command space: {}'.format(e))
+      print('Command space: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def reverse(self, ctx):
     """Da la vuelta al contenido del mensaje"""
     try:
-      end = ''
-      string = ' '.join(ctx.message.content.split()[1:])
-      for i in range(len(string), 0, -1):
-        end += string[i - 1]
-      await self.bot.say(end)
+      if len(ctx.message.mentions) == 0 and len(ctx.message.channel_mentions) == 0 and len(ctx.message.role_mentions) == 0:
+        end = ''
+        string = ' '.join(ctx.message.content.split()[1:])
+        if string != '':
+          for i in range(len(string), 0, -1):
+            end += string[i - 1]
+          await self.bot.send_typing(ctx.message.channel)
+          await self.bot.say(end)
+        else:
+          await self.bot.send_typing(ctx.message.channel)
+          await self.bot.say('Necesitas especificar un mensaje para utilizar el comando')
+      else:
+        await self.bot.send_typing(ctx.message.channel)
+        await self.bot.say('```No puedes hacer eso con el comando {}reverse```'.format(self.Bot.prefix))
     except Exception as e:
-      print('Command reverse: {}'.format(e))
+      print('Command reverse: [{}] {}'.format(type(e).__name__, e))
+
+  @commands.command(pass_context = True)
+  async def invite(self, ctx):
+    """Muestra el enlace para invitar a PeritaBOT 2 a tu servidor"""
+    try:
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.say('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot'.format(self.bot.user.id))
+    except Exception as e:
+      print('Command invite: [{}] {}'.format(type(e).__name__, e))
+
+  @commands.command(pass_context = True, aliases = ['update'])
+  async def updates(self, ctx):
+    """Muestra si hay actualizaciones disponibles"""
+    try:
+      async with aiohttp.get('https://raw.githubusercontent.com/rubegartor/PeritaBOT2/master/version', headers={'User-Agent': 'Mozilla/5.0'}) as r:
+        if r.status == 200:
+          response = await r.text()
+          git_version = response.replace('.', '')
+
+          read = Funcs().readFile(self.Bot.config + 'version').rstrip()
+          local_version = read.replace('.', '')
+
+          if int(git_version) > int(local_version):
+            await self.bot.say('```diff\n+ Hay nuevas actualizaciones para PeritaBOT 2```')
+          else:
+            await self.bot.say('```No hay actualizaciones disponibles para PeritaBOT 2```')
+    except Exception as e:
+      print('Command updates: [{}] {}'.format(type(e).__name__, e))
 
 def setup(bot):
   bot.add_cog(Core(bot))
