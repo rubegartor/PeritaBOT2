@@ -44,12 +44,15 @@ class VoiceState:
     self.bot.loop.call_soon_threadsafe(self.play_next_song.set)
 
   async def audio_player_task(self):
-    while True:
-      self.play_next_song.clear()
-      self.current = await self.songs.get()
-      await self.bot.send_message(self.current.channel, '```Reproduciendo: {}```'.format(str(self.current)))
-      self.current.player.start()
-      await self.play_next_song.wait()
+    try:
+      while True:
+        self.play_next_song.clear()
+        self.current = await self.songs.get()
+        await self.bot.send_message(self.current.channel, '```Reproduciendo: {}```'.format(str(self.current)))
+        self.current.player.start()
+        await self.play_next_song.wait()
+    except Exception as e:
+      print('{} : {}'.format(type(e).__name__, e))
 
 class Music:
   def __init__(self, bot):
@@ -124,7 +127,7 @@ class Music:
       fmt = 'Se ha producido un error procesando la petición: ```py\n{}: {}\n```'
       await self.bot.send_message(ctx.message.channel, fmt.format(type(e).__name__, e))
     else:
-      player.volume = 0.1
+      player.volume = 1
       entry = VoiceEntry(ctx.message, player)
       await self.bot.say('```Añadido: {}```'.format(str(entry)))
       await state.songs.put(entry)
