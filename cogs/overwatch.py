@@ -48,9 +48,13 @@ class Overwatch:
 
         await self.bot.send_typing(ctx.message.channel)
         await self.bot.send_message(ctx.message.channel, embed = e)
+    except KeyError:
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.say('El usuario {} no existe'.format(battletag))
     except Exception as e:
       await self.bot.send_typing(ctx.message.channel)
-      await self.bot.say('El usuario {} no existe o no se puede obtener la información en este momento'.format(battletag))
+      await self.bot.say('Se ha producido un error desconocido')
+      print('{} : {}'.format(type(e).__name__, e))
 
 def setup(bot):
   bot.add_cog(Overwatch(bot))
