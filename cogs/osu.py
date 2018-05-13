@@ -24,10 +24,15 @@ class Osu:
         e.add_field(name = 'Ranking Local 🥇', value = stats[0]['pp_country_rank'], inline = True)
         e.set_author(name = '{}'.format(username), icon_url = 'http://up.ppy.sh/files/osu!logo4-0.png', url = 'https://osu.ppy.sh/u/{}'.format(username))
 
+        await self.bot.send_typing(ctx.message.channel)
         await self.bot.send_message(ctx.message.channel, embed = e)
-    except Exception as e:
+    except IndexError:
       await self.bot.send_typing(ctx.message.channel)
       await self.bot.say('No he podido encontrar al usuario `{}`'.format(username))
+    except Exception as e:
+      print('{} : {}'.format(type(e).__name__, e))
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.say('Se ha producido un error desconocido')
 
 def setup(bot):
   bot.add_cog(Osu(bot))
