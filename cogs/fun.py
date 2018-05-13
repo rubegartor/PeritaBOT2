@@ -31,38 +31,25 @@ class Fun:
       await self.bot.send_typing(ctx.message.channel)
       await self.bot.send_message(ctx.message.channel, embed = embed)
     except Exception as e:
-      print('Command cat: {}'.format(e))
+      print('Command cat: [{}] {}'.format(type(e).__name__, e))
 
-  @commands.command(pass_context = True)
-  async def aww(self, ctx):
-    """Imágenes aleatorias de animalitos"""
+  @commands.command(pass_context = True, aliases=['dogs'])
+  async def dog(self, ctx):
+    """Imágenes aleatorias de perros"""
     try:
-      rnd_url = []
-      async with aiohttp.get('https://www.reddit.com/r/aww/', headers = {'User-Agent': 'Mozilla/5.0'}) as r:
+      color = discord.Color.default()
+      if ctx.message.server is not None:
+        color = ctx.message.server.me.color
+      embed = discord.Embed(title = 'Random Dog', color = color)
+      async with aiohttp.get('https://dog.ceo/api/breeds/image/random', headers={'User-Agent': 'Mozilla/5.0'}) as r:
         if r.status == 200:
-          js = await r.text()
-          soup = BeautifulSoup(js, 'html.parser')
-          main = soup.find('div', id='siteTable')
-          test = main.find_all('div')
-          for i in range(len(test)):
-            try:
-              data = test[i]['data-url']
-              if 'i.imgur.com' in data or 'i.redd.it' in data or 'gfycat.com' in data:
-                if '.gifv' in data:
-                  data = data.replace('.gifv', '.gif')
-                rnd_url.append(data)
-            except Exception as error:
-              continue
-          rnd_url = random.choice(rnd_url)
-          color = discord.Color.default()
-          if ctx.message.server is not None:
-            color = ctx.message.server.me.color
-          await self.bot.send_typing(ctx.message.channel)
-          embed = discord.Embed(title = 'Random Cute animal', color = color)
-          embed.set_image(url = rnd_url)
-          await self.bot.send_message(ctx.message.channel, embed = embed)
+          js = await r.json()
+          dog = js['message']
+      embed.set_image(url = dog)
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.send_message(ctx.message.channel, embed = embed)
     except Exception as e:
-      print('Command aww: {}'.format(e))
+      print('Command dog: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True, name = '8ball')
   async def _8ball(self, ctx):
@@ -77,7 +64,7 @@ class Fun:
         await self.bot.send_typing(ctx.message.channel)
         await self.bot.say(':thinking: ¿Eso es una pregunta?')
     except Exception as e:
-      print('Command 8ball: {}'.format(e))
+      print('Command 8ball: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
   async def choose(self, ctx, *args):
@@ -86,20 +73,32 @@ class Fun:
       await self.bot.send_typing(ctx.message.channel)
       await self.bot.say(random.choice(list(args)))
     except Exception as e:
-      print('Command choose: {}'.format(e))
+      print('Command choose: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True, aliases = ['perita'])
   async def like(self, ctx):
     """Reacciona con un like al último mensaje del canal"""
     try:
-      msg = []
-      async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
-        msg.append(x)
+      msg = [x async for x in self.bot.logs_from(ctx.message.channel, limit = 2)]
 
       await self.bot.delete_message(msg[0])
       await self.bot.add_reaction(msg[1], '👌')
     except Exception as e:
-      print('Command like: {}'.format(e))
+      print('Command like: [{}] {}'.format(type(e).__name__, e))
+
+  @commands.command(pass_context = True)
+  async def se(self, ctx, emoji:discord.Emoji):
+    """Muestra la imagen original del emoji"""
+    try:
+      color = discord.Color.default()
+      if ctx.message.server is not None:
+        color = ctx.message.server.me.color
+      embed = discord.Embed(title = emoji.name, color = color)
+      embed.set_image(url = emoji.url)
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.send_message(ctx.message.channel, embed = embed)
+    except Exception as e:
+      print('Command se: [{}] {}'.format(type(e).__name__, e))
 
 def setup(bot):
   bot.add_cog(Fun(bot))
