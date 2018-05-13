@@ -67,8 +67,9 @@ class Core:
       allowed = 'abcdefghijklmnopqrstuvwxyz'
       data = json.loads(Funcs().readFile(self.Bot.config + 'db/emojis.json'))
       args = ''.join(args).lower()
-
-      msg = [x async for x in self.bot.logs_from(ctx.message.channel, limit = 2)]
+      msg = []
+      async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
+        msg.append(x)
 
       await self.bot.delete_message(msg[0])
 
