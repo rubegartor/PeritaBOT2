@@ -24,8 +24,8 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
 |`updates`                |Muestra si hay actualizaciones disponibles              |Usuario      |
 |`invite`                 |Genera la URL de invitación para PeritaBOT 2            |Usuario      |
-|`spamvoice`              |Spamea el canal de voz en el que estes                  |Usuario      |
-|`se [emoji]`                     |Muestra la imagen original de un emoji                  |Usuario      |
+|`spamvoice [channel]`    |Spamea el canal de voz que especifiques                 |Usuario      |
+|`se [emoji]`             |Muestra la imagen original de un emoji                  |Usuario      |
 |`summon`                 |Une al bot a tu canal de voz                            |Usuario      |
 |`join [channel]`         |Une al bot al canal de voz especificado                 |Usuario      |
 |`playing`                |Muestra la cancion que se esta reproduciendo            |Usuario      |
