@@ -70,9 +70,9 @@
     "info":"Muestra información sobre el servidor y el Bot"
   },
   {
-    "command":"spamvoice",
+    "command":"spamvoice [channel]",
     "permissions":"Usuario",
-    "info":"Spamea el canal de voz en el que estes"
+    "info":"Spamea el canal de voz que especifiques"
   },
   {
     "command":"updates",
