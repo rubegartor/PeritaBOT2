@@ -143,18 +143,14 @@ class Moderation:
       print('Command spam: [{}] {}'.format(type(e).__name__, e))
 
   @commands.command(pass_context = True)
-  async def spamvoice(self, ctx):
+  async def spamvoice(self, ctx, channel : discord.Channel):
     """Se conecta y desconecta el Bot del canal de voz"""
     try:
-      summoned_channel = ctx.message.author.voice_channel
-      if summoned_channel is None:
-        await self.bot.say('```diff\n- Necesitas estar en un canal de voz```')
-      else:
-        for i in range(0, 8):
-          state = await self.bot.join_voice_channel(summoned_channel)
-          await asyncio.sleep(0.2)
-          await state.disconnect()
-          await asyncio.sleep(0.2)
+      for i in range(0, 8):
+        state = await self.bot.join_voice_channel(channel)
+        await asyncio.sleep(0.2)
+        await state.disconnect()
+        await asyncio.sleep(0.2)
     except Exception as e:
       print('Command spamvoice: [{}] {}'.format(type(e).__name__, e))
 
