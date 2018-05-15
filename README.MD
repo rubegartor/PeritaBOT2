@@ -45,19 +45,25 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`prune [num]`            |Elimina num de mensajes (Max. 99)                       |Administrador|
 
 # Configuración
-En esta nueva versión se ha mejorado el modo de configuración del bot ya que tan solo tendremos que editar un archivo *config.ini* con la configuración necesaria.
+En esta nueva versión se ha mejorado el modo de configuración del bot ya que tan solo tendremos que editar un archivo *config.json* con la configuración necesaria.
 
-    [PeritaBOT]
-    token=Ezk5NTc0Onm83hjliPDI0MjAy.DbJ-nQ.IBtH0vEC_lkorkEKuwWOssq7
-    rootRole=bot
-    prefix=!
-    [ChronoGG]
-    channel=18874298390634752
-    hour=18
-    [Osu]
-    osu=d4b2d8c20786a997e0a5b90f143c7530
-    [Memes]
-    path=/home/PeritaBOT/memes/
+    {
+      "PeritaBOT": {
+        "token":"Ezk5NTc0Onm83hjliPDI0MjAy.DbJ-nQ.IBtH0vEC_lkorkEKuwWOssq7",
+        "rootRole":"bot",
+        "prefix":"!"
+      },
+      "ChronoGG": {
+        "channel": "18874298390634752",
+        "hour": "18"
+      },
+      "Osu": {
+        "osu":"d4b2d8c20786a997e0a5b90f143c7530"
+      },
+      "Memes": {
+        "path":"/home/PeritaBOT/memes/"
+      }
+    }
 
 **[PeritaBOT]** - Configuración básica del bot
 
@@ -82,7 +88,6 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
 
  - **path**: Ruta a la carpeta que contiene los memes
     - *Linux:* /home/PeritaBOT/memes/
-    - *Windows:* C:\\\Usuarios\\\PeritaBOT\\\Escritorio\\\memes\\\
 
 # Instalación
 Para instalar la librería principal del bot:
