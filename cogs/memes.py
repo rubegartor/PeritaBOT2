@@ -3,7 +3,6 @@ from run import Bot
 from requests import get
 from utils.funcs import Funcs
 import discord
-import configparser
 import random
 
 class Memes:
