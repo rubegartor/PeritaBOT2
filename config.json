@@ -1,0 +1,17 @@
+{
+  "PeritaBOT": {
+    "token":"",
+    "rootRole":"",
+    "prefix":""
+  },
+  "ChronoGG": {
+    "channel": "",
+    "hour": ""
+  },
+  "Osu": {
+    "osu":""
+  },
+  "Memes": {
+    "path":""
+  }
+}
