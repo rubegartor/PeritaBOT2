@@ -4,7 +4,6 @@ import discord
 import time
 import asyncio
 import datetime
-import configparser
 import os
 import sys
 import json
@@ -12,33 +11,31 @@ import json
 cogs = ['cogs.core', 'cogs.overwatch', 'cogs.fun', 'cogs.moderation', 'cogs.memes', 'cogs.music', 'cogs.osu']
 
 class Bot():
+  def getConfig(self, config, dict, key):
+    if os.path.exists(config + 'config.json'):
+      config = json.loads(Funcs().readFile(config + 'config.json'))
+      return config[dict][key]
+    else:
+      print('[ERROR] Cant read version file')
+      sys.exit()
+
+  def getVersion(self, config):
+    if os.path.exists(config + 'version'):
+      return Funcs().readFile(config + 'version').rstrip()
+    else:
+      print('[ERROR] Cant read version file')
+      sys.exit()
+
   def __init__(self):
     self.config = ''
-
-    def getConfig(dict, key):
-      if os.path.exists(self.config + 'config.ini'):
-        config = configparser.ConfigParser()
-        config.read(self.config + 'config.ini')
-        return config[dict][key]
-      else:
-        print('[ERROR] Cant read version file')
-        sys.exit()
-
-    def getVersion():
-      if os.path.exists(self.config + 'version'):
-        return Funcs().readFile(self.config + 'version').rstrip()
-      else:
-        print('[ERROR] Cant read version file')
-        sys.exit()
-
-    self.token = getConfig('PeritaBOT', 'token')
-    self.osu_token = getConfig('Osu', 'osu')
-    self.chrono_channel_id = getConfig('ChronoGG', 'channel')
-    self.chrono_hour = int(getConfig('ChronoGG', 'hour'))
-    self.root_role = getConfig('PeritaBOT', 'rootRole')
-    self.prefix = getConfig('PeritaBOT', 'prefix')
-    self.memes_path = getConfig('Memes', 'path')
-    self.version = getVersion()
+    self.token = self.getConfig(self.config, 'PeritaBOT', 'token')
+    self.osu_token = self.getConfig(self.config, 'Osu', 'osu')
+    self.chrono_channel_id = self.getConfig(self.config, 'ChronoGG', 'channel')
+    self.chrono_hour = int(self.getConfig(self.config, 'ChronoGG', 'hour'))
+    self.root_role = self.getConfig(self.config, 'PeritaBOT', 'rootRole')
+    self.prefix = self.getConfig(self.config, 'PeritaBOT', 'prefix')
+    self.memes_path = self.getConfig(self.config, 'Memes', 'path')
+    self.version = self.getVersion(self.config)
     self.bot = commands.Bot(command_prefix = self.prefix, description = 'PeritaBOT 2.0')
     self.start_time = time.time()
 
