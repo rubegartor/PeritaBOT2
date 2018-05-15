@@ -60,6 +60,11 @@
     "info":"Muestra una foto aleatoria de gatos"
   },
   {
+    "command":"dog",
+    "permissions":"Usuario",
+    "info":"Muestra una foto aleatoria de perros"
+  },
+  {
     "command":"help",
     "permissions":"Usuario",
     "info":"Muestra el mensaje de ayuda"
