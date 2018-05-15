@@ -1,4 +1,2 @@
-beautifulsoup4==4.6.0
-PyNaCl==1.0.1
 requests==2.18.4
 youtube-dl==2018.5.1
