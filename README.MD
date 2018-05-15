@@ -20,6 +20,7 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`react [text]`           |Reacciona al último mensaje del canal en forma de emojis|Usuario      |
 |`choose [opciones]`      |Elige una opción entre todas                            |Usuario      |
 |`cat`                    |Muestra una foto aleatoria de gatos                     |Usuario      |
+|`dog`                    |Muestra una foto aleatoria de perros                    |Usuario      |
 |`help`                   |Muestra el mensaje de ayuda                             |Usuario      |
 |`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
 |`updates`                |Muestra si hay actualizaciones disponibles              |Usuario      |
