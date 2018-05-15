@@ -5,7 +5,6 @@ import discord
 import random
 import time
 import datetime
-import configparser
 import json
 import aiohttp
 
