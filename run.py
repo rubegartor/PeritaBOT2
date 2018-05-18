@@ -1,5 +1,5 @@
 from discord.ext import commands
-from utils.funcs import Funcs
+from utils import funcs
 import discord
 import time
 import asyncio
@@ -8,12 +8,12 @@ import os
 import sys
 import json
 
-cogs = ['cogs.core', 'cogs.overwatch', 'cogs.fun', 'cogs.moderation', 'cogs.memes', 'cogs.music', 'cogs.osu']
+cogs = ['cogs.core', 'cogs.overwatch', 'cogs.fun', 'cogs.moderation', 'cogs.memes', 'cogs.music', 'cogs.osu', 'cogs.game']
 
 class Bot():
   def getConfig(self, config, dict, key):
     if os.path.exists(config + 'config.json'):
-      config = json.loads(Funcs().readFile(config + 'config.json'))
+      config = json.loads(funcs.readFile(config + 'config.json'))
       return config[dict][key]
     else:
       print('[ERROR] Cant read version file')
@@ -21,7 +21,7 @@ class Bot():
 
   def getVersion(self, config):
     if os.path.exists(config + 'version'):
-      return Funcs().readFile(config + 'version').rstrip()
+      return funcs.readFile(config + 'version').rstrip()
     else:
       print('[ERROR] Cant read version file')
       sys.exit()
@@ -66,7 +66,7 @@ class Bot():
       if message.author == self.bot.user:
         return
       elif message.content.startswith('{}help'.format(self.prefix)):
-        data = json.loads(Funcs().readFile(self.config + 'db/commands.json'))
+        data = json.loads(funcs.sreadFile(self.config + 'db/commands.json'))
         msg = '```'
         for item in range(len(data)):
           msg += '{}{} - {}\n'.format(self.prefix, data[item]['command'], data[item]['info'])
