@@ -1,5 +1,5 @@
 from discord.ext import commands
-from utils.funcs import Funcs
+from utils import funcs
 from run import Bot
 import discord
 import random
@@ -64,7 +64,7 @@ class Core:
     """Reacciona con emojis al último mensaje con el texto que se proporcione"""
     try:
       allowed = 'abcdefghijklmnopqrstuvwxyz'
-      data = json.loads(Funcs().readFile(self.Bot.config + 'db/emojis.json'))
+      data = json.loads(funcs.readFile(self.Bot.config + 'db/emojis.json'))
       args = ''.join(args).lower()
       msg = []
       async for x in self.bot.logs_from(ctx.message.channel, limit = 2):
@@ -164,7 +164,7 @@ class Core:
           response = await r.text()
           git_version = response.replace('.', '')
 
-          read = Funcs().readFile(self.Bot.config + 'version').rstrip()
+          read = funcs.readFile(self.Bot.config + 'version').rstrip()
           local_version = read.replace('.', '')
 
           if int(git_version) > int(local_version):
