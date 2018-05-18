@@ -27,6 +27,7 @@ Todos los comandos del bot los puedes encontrar en la siguiente lista:
 |`invite`                 |Genera la URL de invitación para PeritaBOT 2            |Usuario      |
 |`spamvoice [channel]`    |Spamea el canal de voz que especifiques                 |Usuario      |
 |`se [emoji]`             |Muestra la imagen original de un emoji                  |Usuario      |
+|`game [user]`            |Empieza el juego Conecta 4 con el jugador especificado  |Usuario      |
 |`summon`                 |Une al bot a tu canal de voz                            |Usuario      |
 |`join [channel]`         |Une al bot al canal de voz especificado                 |Usuario      |
 |`playing`                |Muestra la cancion que se esta reproduciendo            |Usuario      |
