@@ -66,7 +66,7 @@ class Bot():
       if message.author == self.bot.user:
         return
       elif message.content.startswith('{}help'.format(self.prefix)):
-        data = json.loads(funcs.sreadFile(self.config + 'db/commands.json'))
+        data = json.loads(funcs.readFile(self.config + 'db/commands.json'))
         msg = '```'
         for item in range(len(data)):
           msg += '{}{} - {}\n'.format(self.prefix, data[item]['command'], data[item]['info'])
