@@ -95,6 +95,11 @@
     "info":"Muestra la imagen original de un emoji"
   },
   {
+    "command":"game [user]",
+    "permissions":"Usuario",
+    "info":"Empieza el juego Conecta 4 con el jugador especificado"
+  },
+  {
     "command":"summon",
     "permissions":"Usuario",
     "info":"Une al bot a tu canal de voz"
