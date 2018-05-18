@@ -1,7 +1,7 @@
 from discord.ext import commands
 from run import Bot
 from requests import get
-from utils.funcs import Funcs
+from utils import funcs
 import discord
 import random
 
@@ -36,7 +36,7 @@ class Memes:
     """Muestra los prefijos disponibles"""
     try:
       prefixes = []
-      meme = Funcs().toList(Funcs().toFiles(self.Bot.memes_path))
+      meme = funcs.toList(funcs.toFiles(self.Bot.memes_path))
       for k,v in meme:
         if not k in prefixes:
           prefixes.append(k)
@@ -50,7 +50,7 @@ class Memes:
     """Añade un meme a través de una URL"""
     try:
       if self.Bot.root_role in [y.name.lower() for y in ctx.message.author.roles]:
-        data = Funcs().toFiles(self.Bot.memes_path)
+        data = funcs.toFiles(self.Bot.memes_path)
         memes = [x for x in data]
         if "_" in name:
           if name[len(name) - 3:] in ['png', 'jpg', 'gif']:
@@ -79,7 +79,7 @@ class Memes:
   async def show(self, ctx, prefix : str):
     """Muestra los memes por prefijo"""
     try:
-      prefixes = Funcs().toList(Funcs().toFiles(self.Bot.memes_path))
+      prefixes = funcs.toList(funcs.toFiles(self.Bot.memes_path))
       selected = [(x, y) for x, y in prefixes if x == prefix]
 
       await self.bot.send_file(ctx.message.channel, self.Bot.memes_path + random.choice(selected)[1])
