@@ -7,6 +7,7 @@ import time
 import datetime
 import json
 import aiohttp
+import calendar
 
 class Core:
   def __init__(self, bot):
@@ -168,11 +169,33 @@ class Core:
           local_version = read.replace('.', '')
 
           if int(git_version) > int(local_version):
+            await self.bot.send_typing(ctx.message.channel)
             await self.bot.say('```diff\n+ Hay nuevas actualizaciones para PeritaBOT 2```')
           else:
+            await self.bot.send_typing(ctx.message.channel)
             await self.bot.say('```No hay actualizaciones disponibles para PeritaBOT 2```')
     except Exception as e:
       print('Command updates: [{}] {}'.format(type(e).__name__, e))
+
+  @commands.command(pass_context = True)
+  async def calendar(self, ctx):
+    """Muestra el calendatio del mes actual"""
+    try:
+      now = datetime.datetime.now()
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.say('`{}`'.format(calendar.month(now.year, now.month)))
+    except Exception as e:
+      print('Command calendar: [{}] {}'.format(type(e).__name__, e))
+
+  @commands.command(pass_context = True)
+  async def github(self, ctx):
+    """Muestra el repositorio en GitHub de PeritaBOT 2"""
+    try:
+      await self.bot.send_typing(ctx.message.channel)
+      await self.bot.say('https://github.com/rubegartor/PeritaBOT2')
+    except Exception as e:
+      print('Command github: [{}] {}'.format(type(e).__name__, e))
+
 
 def setup(bot):
   bot.add_cog(Core(bot))
