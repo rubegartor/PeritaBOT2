@@ -58,12 +58,13 @@ class Game:
 
           if message == None:
             message = await self.bot.say(await self.printBoard())
-            for reaction in reaction_dic.keys():
+            sorted_react_dic = sorted(reaction_dic.keys())
+            for reaction in sorted_react_dic:
               await self.bot.add_reaction(message, reaction)
           else:
             await self.bot.edit_message(message, await self.printBoard())
           while True:
-            res = await self.bot.wait_for_reaction(reaction_dic.keys(), message=message)
+            res = await self.bot.wait_for_reaction(sorted_react_dic, message=message)
             if res.user != self.bot.user:
               if res.user == player:
                 await self.put(reaction_dic[res.reaction.emoji] - 1, color)
@@ -99,8 +100,17 @@ class Game:
       message += '\n'
     return message
 
+  async def checkComplete(self):
+    """Check if board is complete"""
+    columns = [self.board[c][0] for c in range(self.cols)]
+    if not white in columns:
+      await self.bot.say('EMPATE!')
+      self.endgame = True
+      self.is_started = False
+
   async def checkWin(self):
     """Check Win movement"""
+    await self.checkComplete()
     w = await self.getWinner()
     if w:
       self.endgame = True
