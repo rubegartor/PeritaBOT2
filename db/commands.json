@@ -105,7 +105,7 @@
     "info":"Muestra el calendario del mes actual"
   },
   {
-    "commands":"github",
+    "command":"github",
     "permissions":"Usuario",
     "info":"Muestra el repositorio en GitHub de PeritaBOT 2"
   },
