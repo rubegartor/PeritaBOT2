@@ -9,7 +9,7 @@ globalVars = GlobalVars()
 logging.getLogger('discord').setLevel(logging.CRITICAL)
 logging.basicConfig(filename=globalVars.path + 'peritabot.log', level=logging.INFO, filemode='a', format='[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s', datefmt='%d-%m-%Y:%H:%M:%S')
 
-class Osu():
+class Osu(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
 

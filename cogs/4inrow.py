@@ -13,7 +13,7 @@ white = '⚪'
 black = '⚫'
 red = '🔴'
 
-class FourInRow():
+class FourInRow(commands.Cog):
   def __init__(self, bot, cols = 7, rows = 6, requiredToWin = 4):
     self.bot = bot
     self.cols = cols
