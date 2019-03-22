@@ -1,70 +1,39 @@
 # PeritaBOT 2
 
 
-**PeritaBOT 2** es una nueva versión mejorada del antiguo [PeritaBOT](https://github.com/rubegartor/PeritaBOT). Con este bot de discord proporcionaras nuevos comandos a tus usuarios, entre los que destacan comandos administrativos, miscelánea, Music Bot, etc.
+**PeritaBOT 2** es una nueva versión mejorada del antiguo PeritaBOT. Con este bot de discord proporcionaras nuevas utilidades a tu servidor.
 
 # Comandos
 Todos los comandos del bot los puedes encontrar en la siguiente lista:
 
-|Comandos                 |Descripción                                             |Permisos     |
-|-------------------------|--------------------------------------------------------|-------------|
-|`8ball [pregunta]`       |La bola mágica responde a tus preguntas                 |Usuario      |
-|`memes help`             |Más información sobre el grupo de comandos              |Usuario      |
-|`space [num] [word]`     |Añade num espacios entre las letras de la palabra       |Usuario      |
-|`reverse [text]`         |Da la vuelta al contenido del mensaje                   |Usuario      |
-|`avatar [username(s)]`   |Obtiene la foto de perfil de los usuarios mencionados   |Usuario      |
-|`ping`                   |Muestra la latencia (ms) del bot                        |Usuario      |
-|`overwatch [username#id]`|Información sobre el jugador en Overwatch               |Usuario      |
-|`osu [username]`         |Información sobre el jugador en Osu!                    |Usuario      |
-|`random [max_num]`       |Devuelve un número aleatorio                            |Usuario      |
-|`react [text]`           |Reacciona al último mensaje del canal en forma de emojis|Usuario      |
-|`choose [opciones]`      |Elige una opción entre todas                            |Usuario      |
-|`cat`                    |Muestra una foto aleatoria de gatos                     |Usuario      |
-|`dog`                    |Muestra una foto aleatoria de perros                    |Usuario      |
-|`help`                   |Muestra el mensaje de ayuda                             |Usuario      |
-|`info`                   |Muestra información sobre el servidor y el Bot          |Usuario      |
-|`updates`                |Muestra si hay actualizaciones disponibles              |Usuario      |
-|`invite`                 |Genera la URL de invitación para PeritaBOT 2            |Usuario      |
-|`spamvoice [channel]`    |Spamea el canal de voz que especifiques                 |Usuario      |
-|`se [emoji]`             |Muestra la imagen original de un emoji                  |Usuario      |
-|`game [user]`            |Empieza el juego Conecta 4 con el jugador especificado  |Usuario      |
-|`calendar`               |Muestra el calendario del mes actual                    |Usuario      |
-|`github`                 |Muestra el repositorio en GitHub de PeritaBOT 2         |Usuario      |
-|`summon`                 |Une al bot a tu canal de voz                            |Usuario      |
-|`join [channel]`         |Une al bot al canal de voz especificado                 |Usuario      |
-|`playing`                |Muestra la cancion que se esta reproduciendo            |Usuario      |
-|`skip`                   |Peticion para saltar la cancion actual                  |Usuario      |
-|`play [url] or [title]`  |Reproduce/agrega la cancion especificada                |Usuario      |
-|`pause`                  |Pausa la cancion actual                                 |Usuario      |
-|`resume`                 |Continua la cancion pausada                             |Usuario      |
-|`volume [0-100]`         |Establece el volumen para la musica                     |Usuario      |
-|`stop`                   |Kickea el bot del canal de voz                          |Usuario      |
-|`mute [username]`        |Mutea al usuario del canal de voz                       |Administrador|
-|`unmute [username]`      |Desmutea al usuario del canal de voz                    |Administrador|
-|`ban [username]`         |Banea al usuario del servidor                           |Administrador|
-|`unban [username]`       |Desbanea al usuario del servidor                        |Administrador|
-|`ban_list`               |Muestra la lista de usuarios baneados en el servidor    |Administrador|
-|`spam [msg]`             |Spammea un mensaje 10 veces por un canal de texto       |Administrador|
-|`prune [num]`            |Elimina num de mensajes (Max. 99)                       |Administrador|
+|Comandos                 |Descripción                                             |Permisos      |
+|-------------------------|--------------------------------------------------------|--------------|
+|`help`                   |Muestra el mensaje de ayuda                             |everyone      |
+|`8ball [pregunta]`       |La bola mágica responde a tus preguntas                 |everyone      |
+|`avatar [username(s)]`   |Obtiene la foto de perfil de los usuarioss mencionados  |everyone      |
+|`osu [username]`         |Información sobre el jugador en Osu!                    |everyone      |
+|`react [text]`           |Reacciona al último mensaje del canal en forma de emojis|everyone      |
+|`se [emoji]`             |Muestra la imagen original de un emoji                  |everyone      |
+|`game [user]`            |Empieza el juego Conecta 4 con el jugador especificado  |everyone      |
+|`PCCom help`             |Muestra más información sobre el comando PCCom          |everyone      |
+|`PCCom list`             |Muestra una lista de las páginas disponibles            |everyone      |
+|`PCCom show`             |Muestra la ayuda para utilizar el comando               |everyone      |
+|`mute [username]`        |Mutea/desmutea al usuario del canal de voz              |root_role     |
+|`deaf [username]`        |Ensordece al usuario del canal de voz                   |root_role     |
+|`prune [username]`       |Banea al usuario del servidor                           |root_role     |
 
 # Configuración
-En esta nueva versión se ha mejorado el modo de configuración del bot ya que tan solo tendremos que editar un archivo *config.json* con la configuración necesaria.
+La configuración del archivo `config.json` debería parecerse al siguiente:
 
     {
       "PeritaBOT": {
         "token":"Ezk5NTc0Onm83hjliPDI0MjAy.DbJ-nQ.IBtH0vEC_lkorkEKuwWOssq7",
         "rootRole":"bot",
-        "prefix":"!"
-      },
-      "ChronoGG": {
-        "channel": "18874298390634752",
-        "hour": "18"
+        "prefix":"!",
+        "cogs": ["cogs.core", "cogs.mod", "cogs.pccom", "cogs.osu", "cogs.4inrow"]
       },
       "Osu": {
         "osu":"d4b2d8c20786a997e0a5b90f143c7530"
-      },
-      "Memes": {
-        "path":"/home/PeritaBOT/memes/"
       }
     }
 
@@ -73,34 +42,20 @@ En esta nueva versión se ha mejorado el modo de configuración del bot ya que t
  - **token**: Podemos encontrar el token de nuestro bot en el siguiente enlace: [Discord Bot Token](https://discordapp.com/developers/applications/me)
  - **rootRole**: Este es el nombre del rango administrativo superior del servidor
 
- ![enter image description here](https://i.imgur.com/XFyf7sd.png)
+ ![RoleExample](https://i.imgur.com/XFyf7sd.png)
 
  - **prefix**: Es el prefijo utilizado delante de los comandos del bot.
  ***Ejemplo***: *!help*
-
-**[ChronoGG]** -Configuración de las notificaciones de ChronoGG
-
- - **channel**: Id del canal donde queremos que envie las notificaciones
- - **hour**: Hora a la que queremos que envie la notificación al canal de texto
 
 **[Osu]** - Configuración de Osu
 
  - **osu**: Token de la API de osu, podemos encontrar nuestro token de osu en: [Osu API Token](https://osu.ppy.sh/p/api)
 
-**[Memes]** - Configuración de los Memes
-
- - **path**: Ruta a la carpeta que contiene los memes
-    - *Linux:* /home/PeritaBOT/memes/
-
 # Instalación
 Para instalar la librería principal del bot:
 
-    python3 -m pip install -U discord.py[voice]
+    pip install -U git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py
 
 Para instalar otras librerías de python3 necesarias:
 
-    python3 -m pip install -r requirements.txt
-
-Para instalar el paquete ffmpeg:
-
-    sudo apt-get install ffmpeg
+    pip install -r requirements.txt
