@@ -2,16 +2,10 @@
   "PeritaBOT": {
     "token":"",
     "rootRole":"",
-    "prefix":""
-  },
-  "ChronoGG": {
-    "channel": "",
-    "hour": ""
+    "prefix":"!",
+    "cogs": ["cogs.core", "cogs.mod", "cogs.pccom", "cogs.osu", "cogs.4inrow"]
   },
   "Osu": {
-    "osu":""
-  },
-  "Memes": {
-    "path":""
+    "token":""
   }
 }

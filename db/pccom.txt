@@ -1,0 +1,33 @@
+Smartphones|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=M%C3%B3viles%20libres%20y%20Smartphones&idFamilies%5B%5D=1116
+Procesadores|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Procesadores%20para%20el%20PC&idFamilies%5B%5D=4
+Placas Bases|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Placas%20Base&idFamilies%5B%5D=3
+Discos Duros|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Discos%20Duros&idFamilies%5B%5D=5
+Tarjetas Graficas|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Tarjetas%20Gr%C3%A1ficas&idFamilies%5B%5D=6
+Memorias RAM|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Memorias%20RAM&idFamilies%5B%5D=7
+Torres/Cajas/Carcasas|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Torres%20y%20Cajas%20de%20PC&idFamilies%5B%5D=51
+Ventilacion|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Ventiladores&idFamilies%5B%5D=8
+Fuentes de Alimentacion|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Fuentes%20de%20Alimentaci%C3%B3n&idFamilies%5B%5D=144
+Portatiles|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Port%C3%A1tiles&idFamilies%5B%5D=1115
+Servidores|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Servidores&idFamilies%5B%5D=1517
+Tarjetas microSD|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Memoria%20MicroSD&idFamilies%5B%5D=671
+Accesorios Smartphones|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20para%20Smartphone%3A&idFamilies%5B%5D=1189
+Gafas de Realidad Virtual|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Gafas%20Realidad%20Virtual&idFamilies%5B%5D=1559
+Salud y Bienestar|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Salud%20y%20bienestar&idFamilies%5B%5D=1491
+Sistemas Operativos|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Sistemas%20Operativos&idFamilies%5B%5D=1178
+Grabadoras DVD/Blu ray|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Grabadoras%20DVD%2FBlu%20Ray&idFamilies%5B%5D=12
+Multilectores|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Multilectores&idFamilies%5B%5D=169
+Tarjetas de sonido|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Tarjetas%20Sonido&idFamilies%5B%5D=9
+Modding|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Modding&idFamilies%5B%5D=161
+Capturadoras|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Capturadoras&idFamilies%5B%5D=53
+Cables internos de PC|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Cables%20internos%20de%20PC&idFamilies%5B%5D=1331
+Conectividad|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Conectividad&idFamilies%5B%5D=393
+Accesorios Portatiles|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20para%20port%C3%A1tiles&idFamilies%5B%5D=271
+Repuestos Portatiles|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Repuestos%20Port%C3%A1tiles&idFamilies%5B%5D=1483
+Mini-PCs|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Mini%20Pcs&idFamilies%5B%5D=1272
+Barebones|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Barebones&idFamilies%5B%5D=1393
+Sobremesa|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Sobremesa&idFamilies%5B%5D=1501
+Tablets|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Tablets&idFamilies%5B%5D=1282
+Earpods|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Earpods%20y%20Auriculares%20para%20iPhone&idFamilies%5B%5D=1319
+Accesorios Smartwatch|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Smartwatch&idFamilies%5B%5D=1557
+Accesorios Coche|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Coche&idFamilies%5B%5D=1274
+Car Audio|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Car%20Audio&idFamilies%5B%5D=1216
