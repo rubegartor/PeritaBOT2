@@ -137,12 +137,10 @@ class FourInRow(commands.Cog):
             if reaction.emoji == red:
               players['{}#{}'.format(playerTurn.name, playerTurn.discriminator)]['color'] = red
               players['{}#{}'.format(secondPlayer.name, secondPlayer.discriminator)]['color'] = black
-              print(str(players))
               break
             elif reaction.emoji == black:
               players['{}#{}'.format(playerTurn.name, playerTurn.discriminator)]['color'] = black
               players['{}#{}'.format(secondPlayer.name, secondPlayer.discriminator)]['color'] = red
-              print(str(players))
               break
 
 
