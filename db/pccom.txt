@@ -27,7 +27,6 @@ Mini-PCs|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTi
 Barebones|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Barebones&idFamilies%5B%5D=1393
 Sobremesa|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Sobremesa&idFamilies%5B%5D=1501
 Tablets|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Tablets&idFamilies%5B%5D=1282
-Earpods|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Earpods%20y%20Auriculares%20para%20iPhone&idFamilies%5B%5D=1319
 Accesorios Smartwatch|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Smartwatch&idFamilies%5B%5D=1557
 Accesorios Coche|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Coche&idFamilies%5B%5D=1274
 Car Audio|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Car%20Audio&idFamilies%5B%5D=1216
