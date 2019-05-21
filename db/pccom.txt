@@ -30,3 +30,14 @@ Tablets|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTit
 Accesorios Smartwatch|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Smartwatch&idFamilies%5B%5D=1557
 Accesorios Coche|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Accesorios%20Coche&idFamilies%5B%5D=1274
 Car Audio|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Car%20Audio&idFamilies%5B%5D=1216
+E-Books|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Libros%20Electr%C3%B3nicos%20E-Books&idFamilies%5B%5D=1355
+Audio y Vídeo Inalámbrico|https://www.pccomponentes.com/listado/ajax?idFilters%5B%5D=266&idFilters%5B%5D=265&page=*&order=relevance&gtmTitle=Audio%20y%20V%C3%ADdeo%20Inal%C3%A1mbrico&idFamilies%5B%5D=393
+Mandos a Distancia|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Mandos%20a%20Distancia&idFamilies%5B%5D=1262
+Cables de audio y vídeo|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Cables%20de%20audio%20y%20v%C3%ADdeo&idFamilies%5B%5D=1142
+Accesorios Portatiles|https://www.pccomponentes.com/listado/ajax?idFilters%5B%5D=869&page=*&order=relevance&gtmTitle=Accesorios%20para%20port%C3%A1tiles%20Adaptador&idFamilies%5B%5D=271
+Monitores|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Monitores&idFamilies%5B%5D=13
+Teclados|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Teclados&idFamilies%5B%5D=18
+Ratones|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Ratones&idFamilies%5B%5D=17
+Auriculares|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Auriculares&idFamilies%5B%5D=1067
+Altavoces|https://www.pccomponentes.com/listado/ajax?page=*&order=relevance&gtmTitle=Altavoces&idFamilies%5B%5D=21
+Sillas gaming|https://www.pccomponentes.com/listado/ajax?idFilters%5B%5D=1289&page=*&order=relevance&gtmTitle=Sillas%20gaming&idFamilies%5B%5D=1428
