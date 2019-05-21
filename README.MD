@@ -54,8 +54,8 @@ La configuración del archivo `config.json` debería parecerse al siguiente:
 # Instalación
 Para instalar la librería principal del bot:
 
-    pip install -U git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py
+    pip3 install discord.py
 
 Para instalar otras librerías de python3 necesarias:
 
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
