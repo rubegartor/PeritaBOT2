@@ -20,12 +20,12 @@ class PCCom(commands.Cog):
       return _file.readlines()[num]
 
   def writeFile(self, filename, data):
-    with open('upload/{}.txt'.format(filename), 'w', encoding='utf-8') as _file:
+    with open(GlobalVars().path + 'upload/{}.txt'.format(filename), 'w', encoding='utf-8') as _file:
       _file.write(data)
       _file.close()
 
   def removeFile(self, filename):
-    os.remove('upload/{}.txt'.format(filename))
+    os.remove(GlobalVars().path + 'upload/{}.txt'.format(filename))
 
   def getLines(self):
     return sum(1 for line in open(globalVars.path + 'db/pccom.txt'))
@@ -46,7 +46,6 @@ class PCCom(commands.Cog):
       data = None
       async with aiohttp.ClientSession() as session:
         async with session.get(url) as resp:
-          print(resp.status)
           if resp.status == 206:
             data = await resp.text()
 
@@ -146,6 +145,7 @@ class PCCom(commands.Cog):
     try:
       if page != '':
         if page in await self.generateListOfItem():
+          await ctx.send(':construction_worker::skin-tone-3: Tu petición se esta procesando, sé paciente')
           res = await self.generatePage(page, filter, limit, order)
           if res[0] != '':
             await ctx.send(res[0])
@@ -156,7 +156,7 @@ class PCCom(commands.Cog):
               timestamp = time.time()
               self.writeFile(timestamp, '\n'.join(result))
               await ctx.send(':file_folder: No se ha podido mostrar el mensaje ya que excede los 2000 caracteres. Se ha creado el siguiente archivo con la información que has solicitado:')
-              with open('upload/{}.txt'.format(timestamp), 'rb') as fp:
+              with open(GlobalVars().path +  'upload/{}.txt'.format(timestamp), 'rb') as fp:
                 await ctx.send(file=discord.File(fp, 'PCCom Data.txt'))
               self.removeFile(timestamp)
             else:
