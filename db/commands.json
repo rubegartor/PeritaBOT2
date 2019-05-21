@@ -3,5 +3,65 @@
     "command":"help",
     "permissions":"Usuario",
     "info":"Muestra el comando de ayuda para PeritaBOT"
+  },
+  {
+    "command":"8ball [pregunta]",
+    "permissions":"Usuario",
+    "info":"La bola mágica responde a tus preguntas"
+  },
+  {
+    "command":"avatar [username(s)]",
+    "permissions":"Usuario",
+    "info":"Obtiene la foto de perfil de los usuarioss mencionados"
+  },
+  {
+    "command":"osu [username]",
+    "permissions":"Usuario",
+    "info":"Información sobre el jugador en Osu!"
+  },
+  {
+    "command":"react [text]",
+    "permissions":"Usuario",
+    "info":"Reacciona al último mensaje del canal en forma de emojis"
+  },
+  {
+    "command":"se [emoji]",
+    "permissions":"Usuario",
+    "info":"Muestra la imagen original de un emoji"
+  },
+  {
+    "command":"game [user]",
+    "permissions":"Usuario",
+    "info":"Empieza el juego Conecta 4 con el jugador especificado"
+  },
+  {
+    "command":"PCCom help",
+    "permissions":"Usuario",
+    "info":"Muestra más información sobre el comando PCCom"
+  },
+  {
+    "command":"PCCom list",
+    "permissions":"Usuario",
+    "info":"Muestra una lista de las páginas disponibles"
+  },
+  {
+    "command":"PCCom show",
+    "permissions":"Usuario",
+    "info":"Muestra la ayuda para utilizar el comando"
+  },
+  {
+    "command":"mute [username]",
+    "permissions":"Administrador",
+    "info":"Mutea/desmutea al usuario del canal de voz"
+  },
+  {
+    "command":"deaf [username]",
+    "permissions":"Administrador",
+    "info":"Ensordece al usuario del canal de voz"
+  },
+  {
+    "command":"prune [username]",
+    "permissions":"Administrador",
+    "info":"Banea al usuario del servidor"
   }
 ]
