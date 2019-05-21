@@ -27,7 +27,7 @@ class PeritaBOT(commands.Bot):
     if message.author == self.user:
       return
     elif message.content.startswith('{}help'.format(self.prefix)):
-      data = json.loads(Funcs().readFile('db/commands.json'))
+      data = json.loads(Funcs().readFile(GlobalVars().path + 'db/commands.json'))
       msg = '```'
       for item in range(len(data)):
         msg += '{}{} - {}\n'.format(self.prefix, data[item]['command'], data[item]['info'])
