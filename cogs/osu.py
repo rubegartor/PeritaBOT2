@@ -36,8 +36,11 @@ class Osu(commands.Cog):
   async def osu(self, ctx, username):
     """Grupo de comandos para el comando osu, muestra información general sobre el usuario especificado"""
     try:
-      e = await self.getUserInfo(username)
-      await ctx.send(embed = e)
+      if len(ctx.message.mentions) > 0:
+        await ctx.send('El usuario de osu no puede ser una mención de discord')
+      else:
+        e = await self.getUserInfo(username)
+        await ctx.send(embed = e)
     except Exception as e:
       logging.error('[ERROR] {}: {}'.format(type(e).__name__, e))
 
